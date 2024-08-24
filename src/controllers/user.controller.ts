@@ -5,7 +5,7 @@ class UserController {
   public async create(req: Request, res: Response) {
     const { email, name, password } = req.body;
     try {
-      const user = await db.user.create({
+      const user = await db.users.create({
         data: { email, name, password },
       });
 
@@ -29,7 +29,7 @@ class UserController {
 
   public async list(req: Request, res: Response) {
     try {
-      const users = await db.user.findMany();
+      const users = await db.users.findMany();
       return res
         .status(200)
         .json({ success: true, msg: "Users Listed", data: users });
@@ -44,7 +44,7 @@ class UserController {
     const {id} = req.params;
 
     try {
-      const user = await db.user.findUnique({
+      const user = await db.users.findUnique({
         where: {
           id,
         }
@@ -78,7 +78,7 @@ class UserController {
 
 
     try {
-      const user = await db.user.findUnique({
+      const user = await db.users.findUnique({
         where: {
           id,
         }
@@ -94,7 +94,7 @@ class UserController {
       }
 
       if(name){
-        await db.user.update({
+        await db.users.update({
           where: {
             id
           },
@@ -118,7 +118,7 @@ class UserController {
     const {id} = req.params;
 
     try {
-      const user = await db.user.findUnique({
+      const user = await db.users.findUnique({
         where: {
           id,
         }
@@ -126,7 +126,7 @@ class UserController {
 
       if(user){
 
-        await db.user.delete({
+        await db.users.delete({
           where: {id},
         });
         return res
