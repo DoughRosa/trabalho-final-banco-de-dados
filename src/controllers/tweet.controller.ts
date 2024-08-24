@@ -10,7 +10,7 @@ class TweetController {
     }
 
     try {
-      const tweet = await db.tweet.create({
+      const tweet = await db.tweets.create({
         data: { userId, content },
       });
 
@@ -34,7 +34,7 @@ class TweetController {
 
   public async list(req: Request, res: Response) {
     try {
-      const users = await db.user.findMany();
+      const users = await db.users.findMany();
       return res
         .status(200)
         .json({ success: true, msg: "Users Listed", data: users });
@@ -49,7 +49,7 @@ class TweetController {
     const {id} = req.params;
 
     try {
-      const user = await db.user.findUnique({
+      const user = await db.users.findUnique({
         where: {
           id,
         }
@@ -83,7 +83,7 @@ class TweetController {
 
 
     try {
-      const user = await db.user.findUnique({
+      const user = await db.users.findUnique({
         where: {
           id,
         }
@@ -99,7 +99,7 @@ class TweetController {
       }
 
       if(name){
-        await db.user.update({
+        await db.users.update({
           where: {
             id
           },
@@ -123,7 +123,7 @@ class TweetController {
     const {id} = req.params;
 
     try {
-      const user = await db.user.findUnique({
+      const user = await db.users.findUnique({
         where: {
           id,
         }
@@ -131,7 +131,7 @@ class TweetController {
 
       if(user){
 
-        await db.user.delete({
+        await db.users.delete({
           where: {id},
         });
         return res
