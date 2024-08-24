@@ -1,0 +1,25 @@
+{
+  "name": "trabalho-final-banco-de-dados",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc  && node ./dist"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "prisma": "^5.18.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.18.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
