@@ -12,8 +12,6 @@ const routes = () => {
 
     router.get('/:id', authMiddleware, controller.show);
 
-    router.put('/:id', authMiddleware, controller.update);
-
     router.delete('/:id', authMiddleware, controller.delete);
 
     return router;
