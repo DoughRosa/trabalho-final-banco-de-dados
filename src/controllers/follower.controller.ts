@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import db from "../database/prisma.connection";
-import generateHash from "../utils/generateHash";
 
 class FollowerController {
   public async create(req: Request, res: Response) {
