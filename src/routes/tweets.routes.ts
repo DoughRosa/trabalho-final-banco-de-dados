@@ -1,10 +1,10 @@
 import {Router} from 'express'
-import UserController from '../controllers/user.controller';
+import TweetController from '../controllers/tweet.controller';
 import authMiddleware from '../middlewares/auth.middleware';
 
 const routes = () => {
     const router = Router();
-    const controller = new UserController();
+    const controller = new TweetController();
 
     router.get('/', authMiddleware, controller.list);
     

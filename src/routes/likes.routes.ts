@@ -1,18 +1,16 @@
 import {Router} from 'express'
-import UserController from '../controllers/user.controller';
+import LikeController from '../controllers/like.controller';
 import authMiddleware from '../middlewares/auth.middleware';
 
 const routes = () => {
     const router = Router();
-    const controller = new UserController();
+    const controller = new LikeController();
 
     router.get('/', authMiddleware, controller.list);
     
     router.post('/', authMiddleware, controller.create);
 
     router.get('/:id', authMiddleware, controller.show);
-
-    router.put('/:id', authMiddleware, controller.update);
 
     router.delete('/:id', authMiddleware, controller.delete);
 

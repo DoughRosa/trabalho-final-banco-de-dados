@@ -1,6 +1,9 @@
 import express, { Request, Response } from 'express';
 import * as dotenv from 'dotenv';
 import userRoutes from './routes/users.routes';
+import authRoutes from './routes/auth.routes';
+import tweetRoutes from './routes/tweets.routes';
+import likeRoutes from './routes/likes.routes';
 
 dotenv.config();
 
@@ -15,3 +18,6 @@ app.listen(port, ()=> {
 });
 
 app.use('/users', userRoutes());
+app.use('/auth', authRoutes());
+app.use('/tweet', tweetRoutes());
+app.use('/like', likeRoutes());

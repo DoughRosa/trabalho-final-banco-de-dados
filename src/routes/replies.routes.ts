@@ -1,10 +1,10 @@
 import {Router} from 'express'
-import UserController from '../controllers/user.controller';
+import ReplyController from '../controllers/reply.controller';
 import authMiddleware from '../middlewares/auth.middleware';
 
 const routes = () => {
     const router = Router();
-    const controller = new UserController();
+    const controller = new ReplyController();
 
     router.get('/', authMiddleware, controller.list);
     
