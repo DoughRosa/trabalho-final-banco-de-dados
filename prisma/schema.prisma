@@ -62,6 +62,7 @@ model Replies {
   content String @db.VarChar(100)
   tweet Tweets @relation(fields: [tweetId], references: [id])
   tweetId String @db.Uuid
+  tweetType TweetType @default(Reply) @map("tweet_type")
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @map("updated_at")
