@@ -64,12 +64,12 @@ class TweetController {
   }
 
   public async show(req: Request, res: Response) {
-    const {id} = req.params;
+    const {userId} = req.params;
 
     try {
-      const tweet = await db.tweets.findUnique({
+      const tweet = await db.tweets.findMany({
         where: {
-          id,
+          userId,
         }
       });
 
