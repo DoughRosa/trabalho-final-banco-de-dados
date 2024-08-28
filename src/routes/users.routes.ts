@@ -8,7 +8,7 @@ const routes = () => {
 
     router.get('/', authMiddleware, controller.list);
     
-    router.post('/', authMiddleware, controller.create);
+    router.post('/', controller.create);
 
     router.get('/:id', authMiddleware, controller.show);
 
