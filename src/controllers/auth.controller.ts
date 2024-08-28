@@ -5,9 +5,9 @@ import { v4 as uuid } from "uuid";
 
 class AuthController {
   public async store(req: Request, res: Response) {
-    const { name, email, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!name || !email || !password) {
+    if (!email || !password) {
       return res
         .status(400)
         .json({ success: false, msg: "Please fill the requires fields." });
