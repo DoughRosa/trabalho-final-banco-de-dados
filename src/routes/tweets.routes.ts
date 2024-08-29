@@ -10,7 +10,7 @@ const routes = () => {
     
     router.post('/', authMiddleware, controller.create);
 
-    router.get('/:id', authMiddleware, controller.show);
+    router.get('/:userId', authMiddleware, controller.show);
 
     router.put('/:id', authMiddleware, controller.update);
 
