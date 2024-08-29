@@ -4,11 +4,7 @@ import db from "../database/prisma.connection";
 class LikeController {
   public async create(req: Request, res: Response) {
     const token = req.headers.authorization;
-    const { tweet } = req.body;
-
-    if (!tweet) {
-      return res.status(400).json({ success: true, msg: "Tweet Not Found" });
-    }
+    const { tweetId } = req.body;
 
     try {
       const findUser = await db.users.findFirst({
@@ -24,7 +20,7 @@ class LikeController {
         });
       }
 
-      if (!tweet) {
+      if (!tweetId) {
         return res.status(400).json({
           success: false,
           msg: "Tweet not found.",
@@ -33,7 +29,7 @@ class LikeController {
 
       const liked = await db.likes.findFirst({
         where: {
-          tweet,
+          tweetId,
           userId: findUser.id,
         },
       });
@@ -47,7 +43,7 @@ class LikeController {
 
       const like = await db.likes.create({
         data: {
-          tweetId: tweet,
+          tweetId,
           userId: findUser.id,
         },
       });
