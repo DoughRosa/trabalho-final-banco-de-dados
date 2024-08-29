@@ -37,7 +37,7 @@ class AuthController {
 
       res
         .status(200)
-        .json({ success: true, msg: "Logged Successfully", data: { token } });
+        .json({ success: true, msg: "Logged Successfully", data: { token, findUser.id } });
     } catch (error) {
       return res.status(500).json({ success: false, msg: "ERROR Database." });
     }
