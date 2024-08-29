@@ -4,9 +4,9 @@ import generateHash from "../utils/generateHash";
 
 class UserController {
   public async create(req: Request, res: Response) {
-    const { email, name, password } = req.body;
+    const { email, name, password, username } = req.body;
 
-    if (!email || !password || !name) {
+    if (!email || !password || !name || !username) {
       return res
         .status(400)
         .json({ success: true, msg: "Please, fill all the required fields" });
@@ -24,7 +24,7 @@ class UserController {
       const hash = generateHash(password);
 
       const newUser = await db.users.create({
-        data: { email, password: hash, name },
+        data: { email, password: hash, name, username },
       });
 
       if (newUser) {
@@ -34,7 +34,8 @@ class UserController {
           data: {
             id: newUser.id,
             user: newUser.name,
-            email: newUser.email
+            email: newUser.email,
+            username: newUser.username
           },
         });
       }
@@ -89,7 +90,7 @@ class UserController {
 
   public async update(req: Request, res: Response) {
     const { id } = req.params;
-    const { name, password } = req.body;
+    const { name, password, username } = req.body;
 
     try {
       const user = await db.users.findUnique({
@@ -113,6 +114,7 @@ class UserController {
           data: {
             name,
             password,
+            username
           },
         });
 
