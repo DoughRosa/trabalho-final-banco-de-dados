@@ -52,11 +52,7 @@ class TweetController {
     try {
       const tweets = await db.tweets.findMany({
         include: {
-          _count: {
-            select: {
-              likes: true,
-            },
-          },
+          likes: true,
           user: {
             select: {
               name: true,
@@ -84,11 +80,7 @@ class TweetController {
           userId,
         },
         include: {
-          _count: {
-            select: {
-              likes: true,
-            },
-          },
+          likes: true,
           user: {
             select: {
               name: true,
