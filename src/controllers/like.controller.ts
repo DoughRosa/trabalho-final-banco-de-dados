@@ -109,7 +109,7 @@ class LikeController {
       });
 
       if (like) {
-        await db.tweets.delete({
+        await db.likes.delete({
           where: { id },
         });
         return res.status(200).json({
