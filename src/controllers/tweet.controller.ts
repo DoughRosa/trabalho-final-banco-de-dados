@@ -51,6 +51,9 @@ class TweetController {
   public async list(req: Request, res: Response) {
     try {
       const tweets = await db.tweets.findMany({
+        orderBy: {
+          createdAt: "desc",
+        },
         include: {
           likes: true,
           user: {
